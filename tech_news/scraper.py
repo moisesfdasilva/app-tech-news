@@ -1,6 +1,20 @@
-# Requisito 1:
+import requests
+import time
+# from parsel import Selector
+
+
 def fetch(url):
-    """Seu código deve vir aqui"""
+    try:
+        response = requests.get(url, headers={"user-agent": "Fake user-agent"})
+        time.sleep(1)
+        if response.status_code != 200:
+            return None
+        else:
+            # html_text = Selector(text=response.text)
+            # print(html_text)
+            return response.text
+    except requests.ReadTimeout:
+        return None
 
 
 # Requisito 2
