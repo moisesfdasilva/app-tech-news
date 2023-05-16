@@ -23,9 +23,8 @@ def scrape_updates(html_content):
 
 def scrape_next_page_link(html_content):
     selector = Selector(text=html_content)
-    all_urls = selector.css(".page-numbers a::attr(href)").getall()
-    print(all_urls)
-    return "all_urls"
+    next_page_url = selector.css(".next::attr(href)").get()
+    return next_page_url
 
 
 # Requisito 4
