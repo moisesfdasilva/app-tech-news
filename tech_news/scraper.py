@@ -21,9 +21,11 @@ def scrape_updates(html_content):
     return all_urls
 
 
-# Requisito 3
 def scrape_next_page_link(html_content):
-    """Seu código deve vir aqui"""
+    selector = Selector(text=html_content)
+    all_urls = selector.css(".page-numbers a::attr(href)").getall()
+    print(all_urls)
+    return "all_urls"
 
 
 # Requisito 4
