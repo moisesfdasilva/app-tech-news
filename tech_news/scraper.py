@@ -1,6 +1,6 @@
 import requests
 import time
-# from parsel import Selector
+from parsel import Selector
 
 
 def fetch(url):
@@ -10,16 +10,15 @@ def fetch(url):
         if response.status_code != 200:
             return None
         else:
-            # html_text = Selector(text=response.text)
-            # print(html_text)
             return response.text
     except requests.ReadTimeout:
         return None
 
 
-# Requisito 2
 def scrape_updates(html_content):
-    """Seu código deve vir aqui"""
+    selector = Selector(text=html_content)
+    all_urls = selector.css(".entry-title a::attr(href)").getall()
+    return all_urls
 
 
 # Requisito 3
