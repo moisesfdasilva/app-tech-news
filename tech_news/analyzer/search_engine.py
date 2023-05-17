@@ -12,9 +12,16 @@ def search_by_title(title):
     return title_and_url_list
 
 
-# Requisito 8
 def search_by_date(date):
-    """Seu código deve vir aqui"""
+    # AAAA-mm-dd
+    news_list = search_news({"timestamp": {"$regex": date}})
+    date_and_url_list = []
+
+    for news in news_list:
+        news_truple = (news["title"], news["timestamp"])
+        date_and_url_list.append(news_truple)
+
+    return date_and_url_list
 
 
 # Requisito 9
