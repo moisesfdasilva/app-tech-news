@@ -36,7 +36,6 @@ def search_by_date(date):
 
 
 def search_by_category(category):
-    print(category)
     news_list = search_news({
         "category": {"$regex": category, "$options": "i"}})
     title_and_url_list = []
